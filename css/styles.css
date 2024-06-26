@@ -1,0 +1,159 @@
+/* * Variables de colores y formateo  */
+@import url("./clash-display.css");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #010101ff;
+  --white: #fefefeff;
+  --mindaro: #d3f65dff;
+  --onyx: #424244ff;
+  --card-bg: #161616;
+  --battleship-gray: #868687ff;
+  --french-rose: #ee437dff;
+  --avocado: #77941dff;
+  --silver: #c9bebcff;
+  --azure: #5184f1ff;
+  --jungle-green: #1ea277ff;
+}
+
+body {
+  font-family: "ClashDisplay-Light", sans-serif;
+  letter-spacing: 0.15em;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* * Header card  */
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px;
+  position: relative;
+}
+
+.card-header {
+  background-color: var(--onyx);
+  color: var(--mindaro);
+  padding: 20px;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.card h2 {
+  text-align: center;
+  padding: 20px;
+  color: var(--jet);
+}
+
+/* * Add btn  */
+.add {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: var(--mindaro);
+  color: var(--black);
+}
+
+.add img {
+  width: 20px;
+  vertical-align: middle;
+  margin: 5px;
+}
+
+/* * Body card */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column {
+  flex: 25%;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+}
+
+.column h3 {
+  margin: 20px 0;
+  text-align: right;
+}
+
+.delete {
+  position: absolute;
+  top: 160px;
+  right: 20px;
+  color: #333;
+  background-color: var(--mindaro);
+  border: none;
+  border-radius: 7px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.delete img {
+  width: 25px;
+  vertical-align: middle;
+  margin: 5px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body p {
+  margin: 20px 0;
+  text-align: right;
+}
+
+/* * Card footer */
+
+.card-footer {
+  background-color: var(--onyx);
+  padding: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.card-footer p {
+  margin: 20px 0;
+  text-align: right;
+}
+
+/* * Footer  */
+
+.footer {
+  font-family: "ClashDisplay-Light", sans-serif;
+  letter-spacing: 0;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  background-color: var(--davys-gray);
+  color: var(--pearl);
+}
