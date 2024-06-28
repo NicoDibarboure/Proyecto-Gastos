@@ -2,7 +2,7 @@
 
 montoTotal = 0;
 
-function verificarPositivo(numero) {
+let verificarPositivo = (numero) => {
   if (numero === 0) {
     console.log(`El número ${numero} es neutro`);
   } else if (numero > 0) {
@@ -12,7 +12,7 @@ function verificarPositivo(numero) {
     return (montoTotal -= -numero); // ! En este caso si el numero es negativo lo que hago es restarle el signo - para que el monto total sea Negativo.
     console.log(`El número ${numero} es negativo`); // ? Tenia un console log para saber si el numero era positivo o negativo, solo para saber que el codigo pasaba por aqui. Pero al tener el return antes de este console log, nunca se va a ejecutar :).
   }
-}
+};
 
 // * Ahora voy a generar un prompt preguntando cuantas operaciones va a realizar el usuario para saber cuantas vueltas va a dar nuestro ciclo for.
 
