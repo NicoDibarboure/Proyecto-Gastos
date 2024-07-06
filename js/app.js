@@ -15,21 +15,22 @@ const cantidadOperaciones = Number(
 );
 
 alert(
-  `Para indicar un monto negativo debe colocar el signo - adelante del número.`
+  `Para indicar una entrada, ingrese 1. Para indicar una salida, ingrese 2.\nPara indicar un monto negativo debe colocar el signo - adelante del número.`
 );
 
 class Transaccion {
   constructor(tipo, monto, descripcion) {
-    this.tipo = tipo;
+    this.tipo = tipo; // 1 para 'entrada', 2 para 'salida'
     this.monto = monto;
     this.descripcion = descripcion;
     this.fecha = new Date();
   }
 
   detalles() {
-    return `${this.fecha.toLocaleDateString()} - ${this.tipo.toLowerCase()}: $${
-      this.monto
-    } - ${this.descripcion}`;
+    const tipoStr = this.tipo === 1 ? "entrada" : "salida";
+    return `${this.fecha.toLocaleDateString()} - ${tipoStr}: $${this.monto} - ${
+      this.descripcion
+    }`;
   }
 }
 
@@ -62,7 +63,7 @@ class LibroMayor {
 
   obtenerSaldo() {
     return this.transacciones.reduce((saldo, transaccion) => {
-      return transaccion.tipo === "entrada"
+      return transaccion.tipo === 1
         ? saldo + transaccion.monto
         : saldo - transaccion.monto;
     }, 0);
@@ -76,10 +77,10 @@ class LibroMayor {
 
   obtenerTotales() {
     let totalEntradas = this.transacciones
-      .filter((t) => t.tipo === "entrada")
+      .filter((t) => t.tipo === 1)
       .reduce((acc, t) => acc + t.monto, 0);
     let totalSalidas = this.transacciones
-      .filter((t) => t.tipo === "salida")
+      .filter((t) => t.tipo === 2)
       .reduce((acc, t) => acc + t.monto, 0);
     return { totalEntradas, totalSalidas };
   }
@@ -98,7 +99,10 @@ class LibroMayor {
 const libroMayor = new LibroMayor();
 
 for (let i = 0; i < cantidadOperaciones; i++) {
-  const tipo = prompt("Ingrese el tipo de transacción (entrada o salida):");
+  const tipo = parseInt(
+    prompt("Ingrese el tipo de transacción (1 para entrada, 2 para salida):"),
+    10
+  );
   const monto = parseFloat(prompt("Ingrese el monto de la transacción:"));
   const descripcion = prompt("Ingrese una descripción para la transacción:");
 
