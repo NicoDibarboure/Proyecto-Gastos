@@ -1,4 +1,4 @@
-/* * Variables de colores y formateo  */
+/* Variables de colores y formateo */
 @import url("./clash-display.css");
 * {
   margin: 0;
@@ -7,17 +7,19 @@
 }
 
 :root {
-  --black: #010101ff;
-  --white: #fefefeff;
-  --mindaro: #d3f65dff;
-  --onyx: #424244ff;
+  --black: #010101;
+  --white: #fefefe;
+  --mindaro: #d3f65d;
+  --onyx: #424244;
   --card-bg: #161616;
-  --battleship-gray: #868687ff;
-  --french-rose: #ee437dff;
-  --avocado: #77941dff;
-  --silver: #c9bebcff;
-  --azure: #5184f1ff;
-  --jungle-green: #1ea277ff;
+  --battleship-gray: #868687;
+  --french-rose: #ee437d;
+  --avocado: #77941d;
+  --silver: #c9bebc;
+  --azure: #5184f1;
+  --jungle-green: #1ea277;
+  --footer-bg: #424244;
+  --footer-text: #fefefe;
 }
 
 body {
@@ -30,10 +32,10 @@ body {
 .container {
   max-width: 1400px;
   margin: 0 auto;
+  padding: 20px;
 }
 
-/* * Header card  */
-
+/* Header */
 h1 {
   text-align: center;
   margin: 20px 0;
@@ -45,6 +47,7 @@ h1 {
   overflow: hidden;
   margin: 20px;
   position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
@@ -54,38 +57,37 @@ h1 {
   text-align: center;
   font-size: 1.3em;
   font-weight: bold;
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid var(--silver);
 }
 
 .card h2 {
   text-align: center;
   padding: 20px;
-  color: var(--jet);
+  color: var(--silver);
 }
 
-/* * Add btn  */
+/* Add button */
 .add {
   position: absolute;
   top: 20px;
   right: 20px;
-  color: #333;
+  color: var(--black);
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
   font-weight: 600;
   background-color: var(--mindaro);
-  color: var(--black);
+  display: flex;
+  align-items: center;
 }
 
 .add img {
   width: 20px;
-  vertical-align: middle;
-  margin: 5px;
+  margin-right: 5px;
 }
 
-/* * Body card */
-
+/* Body card */
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -95,7 +97,6 @@ h1 {
 .column {
   flex: 25%;
   padding: 10px;
-  margin: 0;
   text-align: center;
 }
 
@@ -108,7 +109,7 @@ h1 {
   position: absolute;
   top: 160px;
   right: 20px;
-  color: #333;
+  color: var(--black);
   background-color: var(--mindaro);
   border: none;
   border-radius: 7px;
@@ -131,8 +132,7 @@ h1 {
   text-align: right;
 }
 
-/* * Card footer */
-
+/* Card footer */
 .card-footer {
   background-color: var(--onyx);
   padding: 10px;
@@ -146,14 +146,118 @@ h1 {
   text-align: right;
 }
 
-/* * Footer  */
-
+/* Footer */
 .footer {
   font-family: "ClashDisplay-Light", sans-serif;
-  letter-spacing: 0;
   width: 100%;
   padding: 10px 0;
   text-align: center;
-  background-color: var(--davys-gray);
-  color: var(--pearl);
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+}
+
+/* Responsive Design */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .container {
+    padding: 10px;
+  }
+
+  .card {
+    margin: 10px;
+  }
+
+  .card-header,
+  .card-body,
+  .card-footer {
+    padding: 10px;
+  }
+
+  .column {
+    flex: 50%;
+  }
+
+  .delete {
+    top: 140px;
+    right: 10px;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .add {
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+  }
+
+  .add img {
+    width: 15px;
+  }
+
+  .card-header,
+  .card-body,
+  .card-footer {
+    padding: 5px;
+  }
+
+  .column {
+    flex: 100%;
+  }
+
+  .delete {
+    top: 120px;
+    right: 10px;
+    padding: 5px;
+  }
+
+  .delete img {
+    width: 20px;
+  }
+
+  .footer {
+    font-size: 0.9em;
+  }
+}
+
+/* Small smartphones */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.2em;
+  }
+
+  .add {
+    top: 5px;
+    right: 5px;
+    padding: 3px;
+  }
+
+  .add img {
+    width: 12px;
+  }
+
+  .card-header,
+  .card-body,
+  .card-footer {
+    padding: 2px;
+  }
+
+  .delete {
+    top: 100px;
+    right: 5px;
+    padding: 3px;
+  }
+
+  .delete img {
+    width: 15px;
+  }
+
+  .footer {
+    font-size: 0.8em;
+  }
 }
