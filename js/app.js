@@ -42,11 +42,23 @@ class LibroMayor {
     this.transacciones.push(transaccion);
   }
 
+  eliminarTransaccion(index) {
+    if (index >= 0 && index < this.transacciones.length) {
+      this.transacciones.splice(index, 1);
+    }
+  }
+
+  filtrarTransacciones(tipo) {
+    return this.transacciones.filter(transaccion => transaccion.tipo === tipo);
+  }
+
+  buscarTransaccion(descripcion) {
+    return this.transacciones.find(transaccion => transaccion.descripcion.includes(descripcion));
+  }
+
   obtenerSaldo() {
     return this.transacciones.reduce((saldo, transaccion) => {
-      return transaccion.tipo === "entrada"
-        ? saldo + transaccion.monto
-        : saldo - transaccion.monto;
+      return transaccion.tipo === "entrada" ? saldo + transaccion.monto : saldo - transaccion.monto;
     }, 0);
   }
 
@@ -55,6 +67,20 @@ class LibroMayor {
       console.log(transaccion.detalles());
     });
   }
+}
+
+obtenerTotales() {
+  let totalEntradas = this.transacciones.filter(t => t.tipo === "entrada").reduce((acc, t) => acc + t.monto, 0);
+  let totalSalidas = this.transacciones.filter(t => t.tipo === "salida").reduce((acc, t) => acc + t.monto, 0);
+  return { totalEntradas, totalSalidas };
+}
+
+ordenarPorFecha() {
+  this.transacciones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+}
+
+buscarPorMonto(monto) {
+  return this.transacciones.filter(transaccion => transaccion.monto === monto);
 }
 
 const libroMayor = new LibroMayor();
@@ -73,3 +99,6 @@ for (let i = 0; i < cantidadOperaciones; i++) {
 libroMayor.mostrarTransacciones();
 console.log("Saldo Actual:", libroMayor.obtenerSaldo());
 console.log(`El monto total es de: ${montoTotal}`);
+
+libroMayor.ordenarPorFecha();
+libroMayor.mostrarTransacciones();
