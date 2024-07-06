@@ -49,16 +49,22 @@ class LibroMayor {
   }
 
   filtrarTransacciones(tipo) {
-    return this.transacciones.filter(transaccion => transaccion.tipo === tipo);
+    return this.transacciones.filter(
+      (transaccion) => transaccion.tipo === tipo
+    );
   }
 
   buscarTransaccion(descripcion) {
-    return this.transacciones.find(transaccion => transaccion.descripcion.includes(descripcion));
+    return this.transacciones.find((transaccion) =>
+      transaccion.descripcion.includes(descripcion)
+    );
   }
 
   obtenerSaldo() {
     return this.transacciones.reduce((saldo, transaccion) => {
-      return transaccion.tipo === "entrada" ? saldo + transaccion.monto : saldo - transaccion.monto;
+      return transaccion.tipo === "entrada"
+        ? saldo + transaccion.monto
+        : saldo - transaccion.monto;
     }, 0);
   }
 
@@ -67,20 +73,26 @@ class LibroMayor {
       console.log(transaccion.detalles());
     });
   }
-}
 
-obtenerTotales() {
-  let totalEntradas = this.transacciones.filter(t => t.tipo === "entrada").reduce((acc, t) => acc + t.monto, 0);
-  let totalSalidas = this.transacciones.filter(t => t.tipo === "salida").reduce((acc, t) => acc + t.monto, 0);
-  return { totalEntradas, totalSalidas };
-}
+  obtenerTotales() {
+    let totalEntradas = this.transacciones
+      .filter((t) => t.tipo === "entrada")
+      .reduce((acc, t) => acc + t.monto, 0);
+    let totalSalidas = this.transacciones
+      .filter((t) => t.tipo === "salida")
+      .reduce((acc, t) => acc + t.monto, 0);
+    return { totalEntradas, totalSalidas };
+  }
 
-ordenarPorFecha() {
-  this.transacciones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
-}
+  ordenarPorFecha() {
+    this.transacciones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+  }
 
-buscarPorMonto(monto) {
-  return this.transacciones.filter(transaccion => transaccion.monto === monto);
+  buscarPorMonto(monto) {
+    return this.transacciones.filter(
+      (transaccion) => transaccion.monto === monto
+    );
+  }
 }
 
 const libroMayor = new LibroMayor();
@@ -102,3 +114,8 @@ console.log(`El monto total es de: ${montoTotal}`);
 
 libroMayor.ordenarPorFecha();
 libroMayor.mostrarTransacciones();
+
+const totales = libroMayor.obtenerTotales();
+console.log(
+  `Total Entradas: $${totales.totalEntradas}, Total Salidas: $${totales.totalSalidas}`
+);
