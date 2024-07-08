@@ -1,263 +1,109 @@
-/* Variables de colores y formateo */
-@import url("./clash-display.css");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --black: #010101;
-  --white: #fefefe;
-  --mindaro: #d3f65d;
-  --onyx: #424244;
-  --card-bg: #161616;
-  --battleship-gray: #868687;
-  --french-rose: #ee437d;
-  --avocado: #77941d;
-  --silver: #c9bebc;
-  --azure: #5184f1;
-  --jungle-green: #1ea277;
-  --footer-bg: #424244;
-  --footer-text: #fefefe;
-}
-
 body {
-  font-family: "ClashDisplay-Light", sans-serif;
-  letter-spacing: 0.15em;
-  background-color: var(--black);
-  color: var(--white);
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: #202123;
+  color: #333;
 }
 
-.container {
-  max-width: 1400px;
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
 }
 
-/* Header */
+h1,
+h2 {
+  margin: 0 0 20px;
+}
+
 h1 {
+  font-size: 2.5rem;
+  color: white;
   text-align: center;
-  margin: 20px 0;
 }
-
-.card {
-  background-color: var(--card-bg);
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 20px;
-  position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-  background-color: var(--onyx);
-  color: var(--mindaro);
+.form-section,
+.expenses-section {
+  background: #2cf354;
   padding: 20px;
-  text-align: center;
-  font-size: 1.3em;
-  font-weight: bold;
-  border-bottom: 1px solid var(--silver);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-.card h2 {
-  text-align: center;
-  padding: 20px;
-  color: var(--white);
-}
-
-/* Add button */
-.add {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: var(--black);
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-weight: 600;
-  background-color: var(--mindaro);
+form {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
-.add img {
-  width: 20px;
-  margin-right: 5px;
+label {
+  margin-bottom: 5px;
 }
 
-/* Body card */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 4px;
+input {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.column {
-  flex: 25%;
-  padding: 10px;
-  text-align: center;
-}
-
-.column h3 {
-  margin: 20px 0;
-  text-align: right;
-}
-
-.delete {
-  position: absolute;
-  top: 160px;
-  right: 20px;
-  color: var(--black);
-  background-color: var(--mindaro);
+button {
+  padding: 10px 20px;
+  background-color: #27aa43b4;
+  color: black;
   border: none;
-  border-radius: 7px;
-  padding: 5px 10px;
+  border-radius: 30px;
   cursor: pointer;
 }
 
-.delete img {
-  width: 25px;
-  vertical-align: middle;
-  margin: 5px;
+button:hover {
+  background-color: #28a745;
 }
 
-.card-body {
-  padding: 20px;
-}
-
-.card-body p {
-  margin: 20px 0;
-  text-align: right;
-}
-
-/* Card footer */
-.card-footer {
-  background-color: var(--onyx);
-  padding: 10px;
-  text-align: center;
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-.card-footer p {
-  margin: 20px 0;
-  text-align: right;
-}
-
-/* Footer */
-.footer {
-  font-family: "ClashDisplay-Light", sans-serif;
+table {
   width: 100%;
-  padding: 10px 0;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+}
+
+.actions button {
+  background-color: #23cc49;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.actions button.edit {
+  background-color: #ffc107;
+}
+
+.actions button.delete {
+  background-color: #dc3545;
+}
+
+.actions button:hover {
+  opacity: 0.8;
+}
+
+.footer {
+  background-color: #23cc49;
+  color: black;
   text-align: center;
-  background-color: var(--footer-bg);
-  color: var(--footer-text);
-}
-
-/* Responsive Design */
-
-/* Tablets */
-@media (max-width: 1024px) {
-  .container {
-    padding: 10px;
-  }
-
-  .card {
-    margin: 10px;
-  }
-
-  .card-header,
-  .card-body,
-  .card-footer {
-    padding: 10px;
-  }
-
-  .column {
-    flex: 50%;
-  }
-
-  .delete {
-    top: 140px;
-    right: 10px;
-  }
-}
-
-/* Smartphones */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.5em;
-  }
-
-  .add {
-    top: 10px;
-    right: 10px;
-    padding: 5px;
-  }
-
-  .add img {
-    width: 15px;
-  }
-
-  .card-header,
-  .card-body,
-  .card-footer {
-    padding: 5px;
-  }
-
-  .column {
-    flex: 100%;
-  }
-
-  .delete {
-    top: 120px;
-    right: 10px;
-    padding: 5px;
-  }
-
-  .delete img {
-    width: 20px;
-  }
-
-  .footer {
-    font-size: 0.9em;
-  }
-}
-
-/* Small smartphones */
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.2em;
-  }
-
-  .add {
-    top: 5px;
-    right: 5px;
-    padding: 3px;
-  }
-
-  .add img {
-    width: 12px;
-  }
-
-  .card-header,
-  .card-body,
-  .card-footer {
-    padding: 2px;
-  }
-
-  .delete {
-    top: 100px;
-    right: 5px;
-    padding: 3px;
-  }
-
-  .delete img {
-    width: 15px;
-  }
-
-  .footer {
-    font-size: 0.8em;
-  }
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

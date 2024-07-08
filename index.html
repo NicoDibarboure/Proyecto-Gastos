@@ -3,110 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AdministraT | Nicolas Dibarboure</title>
+    <title> $PENDS | Nicolas Dibarboure</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
   </head>
   <body>
-    <h1>AdministraT</h1>
+    <main>
+      <h1>$PENDS</h1>
+      <section class="form-section">
+          <h2>Añadir un nuevo gasto</h2>
+          <form id="formulario-gastos">
+              <label for="categoria">Categoria:</label>
+              <input type="text" id="categoria" name="categoria" required>
 
-    <div class="container">
-      <div class="card">
-           <div class="card-header">
-          <h2>Ingresos</h2>
-            <button class="add">
-            <img src="./assets/plus_icon.svg" alt="Plus Icon" />
-          </button>
-        </div>
-          <div class="card-body">
-            <div class="row">
-                <div class="column">
-                    <h3>Nombre del Ingreso</h3>
-                </div>
-                <div class="column">
-                    <h3>Categoria del Ingreso</h3>
-                </div>
-                <div class="column">
-                    <h3>Monto del Ingreso</h>
-                </div>
-                <div class="column">
-                    <button class="delete">
-                    <img src="./assets/delete-icon.svg" alt="Delete Icon" />
-                    </button>
-                </div>
-            </div>
-        </div>        
-        <div class="card-footer">
-            <p>Monto Total: $0</p>
-        </div>
-      </div>
+              <label for="precio">Monto:</label>
+              <input type="number" id="precio" name="precio" step="0.01" required>
 
-      <div class="card">
-        <div class="card-header">
-          <h2>Egresos</h2>
-          <button class="add">
-            <img src="./assets/plus_icon.svg" alt="Plus Icon" />
-          </button>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="column">
-                    <h3>Nombre del Egreso</h3>
-                </div>
-                <div class="column">
-                    <h3>Categoria del Egreso</h3>
-                </div>
-                <div class="column">
-                    <h3>Monto del Egreso</h>
-                </div>
-                <div class="column">
-                    <button class="delete">
-                    <img src="./assets/delete-icon.svg" alt="Delete Icon" />
-                    </button>
-                </div>
-            </div>
-        </div>        
-        <div class="card-footer">
-            <p>Monto Total: $0</p>
-        </div>
-      </div>
+              <button type="submit">Agregar Gasto</button>
 
-      <div class="card">
-        <div class="card-header">
-          <h2>Balance</h2>
-          <button class="add">
-            <img src="./assets/plus_icon.svg" alt="Plus Icon" />
-          </button>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="column">
-                    <h3>Nombre del Ingreso</h3>
-                </div>
-                <div class="column">
-                    <h3>Categoria del Ingreso</h3>
-                </div>
-                <div class="column">
-                    <h3>Monto del Ingreso</h>
-                </div>
-                <div class="column">
-                    <button class="delete">
-                    <img src="./assets/delete-icon.svg" alt="Delete Icon" />
-                    </button>
-                </div>
-            </div>
-        </div>        
-        <div class="card-footer">
-            <p>Monto Total: $0</p>
-        </div>
-      </div>
-    </div>
+              
+          </form>
+      </section>
+      <section class="expenses-section">
+          <h2>Gastos</h2>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Categoria</th>
+                      <th>Monto</th>
+                      <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody id="expenses-list">
+                  <!-- Expenses will be added here -->
 
+               
+                  <tr>
+                      <td>Comida</td>
+                      <td>$1000.00</td>
+                      <td>
+                          <button class="edit-button">Editar</button>
+                          <button class="delete-button">Eliminar</button>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>Transporte</td>
+                      <td>$500.00</td>
+                      <td>
+                          <button class="edit-button">Editar</button>
+                          <button class="delete-button">Eliminar</button>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>Entretenimiento</td>
+                      <td>$200.00</td>
+                      <td>
+                          <button class="edit-button">Editar</button>
+                          <button class="delete-button">Eliminar</button>
+                      </td>
+              </tbody>
+          </table>
+      </section>
+  </main>
+  </body>
     
+
     <footer class="footer">
       <p>&copy; 2024 - Nicolas Dibarboure</p>
     </footer>
 
-    <script src="js/app.js"></script>
+    <!-- <script src="js/app.js"></script> -->
   </body>
 </html>
