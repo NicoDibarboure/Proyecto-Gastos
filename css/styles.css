@@ -5,9 +5,43 @@ body {
   color: #333;
 }
 
-header {
-  background-color: #007bff;
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.navbar {
+  background-color: #2cf354;
   color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 40px;
+  margin-bottom: 35px;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  color: black;
+}
+
+header {
+  background-color: #2cf354;
+  color: black;
   padding: 20px;
   text-align: center;
 }
@@ -18,14 +52,16 @@ main {
   margin: 0 auto;
 }
 
-h1,
 h2 {
   margin: 0 0 20px;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.925);
 }
 
 h1 {
+  margin: 0;
   font-size: 2.5rem;
-  color: white;
+  color: rgba(0, 0, 0, 0.925);
   text-align: center;
 }
 .form-section,
@@ -48,9 +84,11 @@ label {
 
 input {
   margin-bottom: 10px;
+  background-color: transparent;
   padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
 }
 
 button {
@@ -69,12 +107,14 @@ button:hover {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 th,
 td {
   padding: 10px;
+  text-align: left;
+  color: #222;
 }
 
 .actions button {
