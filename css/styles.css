@@ -64,6 +64,10 @@ h1 {
   color: rgba(0, 0, 0, 0.925);
   text-align: center;
 }
+
+h1 span {
+  color: #8400fffa;
+}
 .form-section,
 .expenses-section {
   background: #2cf354;
@@ -93,15 +97,17 @@ input {
 
 button {
   padding: 10px 20px;
-  background-color: #27aa43b4;
-  color: black;
+  background-color: #8400fffa;
+  color: white;
   border: none;
   border-radius: 30px;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 button:hover {
   background-color: #28a745;
+  transition: all 0.3s;
 }
 
 table {
