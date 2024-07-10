@@ -106,3 +106,52 @@ console.log(
   `Total Entradas: $${totales.totalEntradas}, Total Salidas: $${totales.totalSalidas}`
 );
 console.log("Saldo Actual:", libroMayor.obtenerSaldo());
+
+function agruparYCalcularMaximos(transacciones) {
+  return transacciones.reduce((grupos, transaccion) => {
+    // Obtengo el año y el mes de la transacción
+    const fecha = new Date(transaccion.fecha);
+    const mes = `${fecha.getFullYear()}-${("0" + (fecha.getMonth() + 1)).slice(
+      -2
+    )}`;
+
+    // Si el grupo para el mes no existe, lo creo
+    if (!grupos[mes]) {
+      grupos[mes] = {
+        transacciones: [],
+        ingresoMax: -Infinity,
+        gastoMax: -Infinity,
+      };
+    }
+
+    // Añado la transacción al grupo correspondiente
+    grupos[mes].transacciones.push(transaccion);
+
+    // Actualizo el ingreso máximo si es una entrada (tipo 1)
+    if (transaccion.tipo === 1 && transaccion.monto > grupos[mes].ingresoMax) {
+      grupos[mes].ingresoMax = transaccion.monto;
+    }
+
+    // Actualizo el gasto máximo si es una salida (tipo 2)
+    if (transaccion.tipo === 2 && transaccion.monto > grupos[mes].gastoMax) {
+      grupos[mes].gastoMax = transaccion.monto;
+    }
+
+    return grupos;
+  }, {});
+}
+
+// Uso la función con el conjunto de transacciones
+const transaccionesPorMesConMaximos = agruparYCalcularMaximos(
+  libroMayor.transacciones
+);
+
+console.log(transaccionesPorMesConMaximos);
+
+// Accedemos a los ingresos y gastos más altos de un mes específico
+for (const mes in transaccionesPorMesConMaximos) {
+  const { ingresoMax, gastoMax } = transaccionesPorMesConMaximos[mes];
+  console.log(
+    `Mes: ${mes}, Ingreso Máximo: $${ingresoMax}, Gasto Máximo: $${gastoMax}`
+  );
+}
