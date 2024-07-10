@@ -1,15 +1,3 @@
-let montoTotal = 0;
-
-const verificarPositivo = (numero) => {
-  if (numero === 0) {
-    console.log(`El número ${numero} es neutro`);
-  } else if (numero > 0) {
-    montoTotal += numero;
-  } else {
-    montoTotal += numero; // Sumar directamente el número negativo
-  }
-};
-
 const cantidadOperaciones = Number(
   prompt("Ingrese la cantidad de operaciones que va a realizar: ")
 );
@@ -108,13 +96,7 @@ for (let i = 0; i < cantidadOperaciones; i++) {
 
   const nuevaTransaccion = new Transaccion(tipo, monto, descripcion);
   libroMayor.agregarTransaccion(nuevaTransaccion);
-
-  verificarPositivo(monto);
 }
-
-libroMayor.mostrarTransacciones();
-console.log("Saldo Actual:", libroMayor.obtenerSaldo());
-console.log(`El monto total es de: ${montoTotal}`);
 
 libroMayor.ordenarPorFecha();
 libroMayor.mostrarTransacciones();
@@ -123,3 +105,4 @@ const totales = libroMayor.obtenerTotales();
 console.log(
   `Total Entradas: $${totales.totalEntradas}, Total Salidas: $${totales.totalSalidas}`
 );
+console.log("Saldo Actual:", libroMayor.obtenerSaldo());
