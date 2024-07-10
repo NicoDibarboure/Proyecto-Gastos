@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #202123;
   color: #333;
 }
@@ -8,10 +8,6 @@ body {
 a {
   color: #007bff;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 .navbar {
@@ -29,14 +25,25 @@ a:hover {
   display: flex;
   justify-content: space-between;
   list-style: none;
+  font-weight: 500;
 }
 
 .navbar ul li {
   margin-right: 20px;
+  background: purple;
+  padding: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navbar ul li:hover {
+  background-color: #28a745;
+  transition: background-color 0.3s;
 }
 
 .navbar ul li a {
-  color: black;
+  color: white;
 }
 
 header {
@@ -75,6 +82,8 @@ h1 span {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
 }
 
 form {
@@ -102,18 +111,21 @@ button {
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  transition: all 0.3s;
+  font-weight: 600;
+  transition: background-color 0.3s;
 }
 
 button:hover {
   background-color: #28a745;
-  transition: all 0.3s;
+  transition: background-color 0.3s;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 30px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
 }
 
 th,
@@ -148,6 +160,7 @@ td {
   background-color: #23cc49;
   color: black;
   text-align: center;
+  font-weight: 500;
   padding: 10px;
   position: fixed;
   bottom: 0;
