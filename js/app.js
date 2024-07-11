@@ -88,8 +88,7 @@ const libroMayor = new LibroMayor();
 
 for (let i = 0; i < cantidadOperaciones; i++) {
   const tipo = parseInt(
-    prompt("Ingrese el tipo de transacción (1 para entrada, 2 para salida):"),
-    10
+    prompt("Ingrese el tipo de transacción (1 para entrada, 2 para salida):")
   );
   if (tipo !== 1 && tipo !== 2) {
     alert("Tipo de transacción inválido. Por favor, ingrese 1 o 2.");
