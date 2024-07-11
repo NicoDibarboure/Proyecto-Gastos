@@ -3,7 +3,7 @@ const cantidadOperaciones = Number(
 );
 
 alert(
-  `Para indicar una entrada, ingrese 1. Para indicar una salida, ingrese 2.\nPara indicar un monto negativo debe colocar el signo - adelante del número.`
+  `Para indicar una entrada, ingrese 1.\nPara indicar una salida, ingrese 2.\nPara indicar un monto negativo debe colocar el signo - adelante del número.`
 );
 
 class Transaccion {
@@ -155,8 +155,6 @@ const transaccionesPorMesConMaximos = agruparYCalcularMaximos(
   libroMayor.transacciones
 );
 
-console.log(transaccionesPorMesConMaximos);
-
 // Accedemos a los ingresos y gastos más altos de un mes específico
 for (const mes in transaccionesPorMesConMaximos) {
   const { ingresoMax, gastoMax } = transaccionesPorMesConMaximos[mes];
@@ -164,3 +162,6 @@ for (const mes in transaccionesPorMesConMaximos) {
     `Mes: ${mes}, Ingreso Máximo: $${ingresoMax}, Gasto Máximo: $${gastoMax}`
   );
 }
+
+// Muestro al final el objeto con los grupos y los máximos.
+console.log(transaccionesPorMesConMaximos);
