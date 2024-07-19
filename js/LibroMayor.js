@@ -28,11 +28,13 @@ export class LibroMayor {
   }
 
   obtenerSaldo() {
-    return this.transacciones.reduce((saldo, transaccion) => {
-      return transaccion.tipo === 1
-        ? saldo + transaccion.monto
-        : saldo - transaccion.monto;
-    }, 0);
+    return this.transacciones.reduce(
+      (saldo, transaccion) =>
+        transaccion.tipo === 1
+          ? saldo + transaccion.monto
+          : saldo - transaccion.monto,
+      0
+    );
   }
 
   mostrarTransacciones() {
@@ -42,13 +44,17 @@ export class LibroMayor {
   }
 
   obtenerTotales() {
-    let totalEntradas = this.transacciones
-      .filter((t) => t.tipo === 1)
-      .reduce((acc, t) => acc + t.monto, 0);
-    let totalSalidas = this.transacciones
-      .filter((t) => t.tipo === 2)
-      .reduce((acc, t) => acc + t.monto, 0);
-    return { totalEntradas, totalSalidas };
+    return this.transacciones.reduce(
+      (totales, transaccion) => {
+        if (transaccion.tipo === 1) {
+          totales.totalEntradas += transaccion.monto;
+        } else {
+          totales.totalSalidas += transaccion.monto;
+        }
+        return totales;
+      },
+      { totalEntradas: 0, totalSalidas: 0 }
+    );
   }
 
   ordenarPorFecha() {
