@@ -66,17 +66,19 @@ main {
   margin: 0 auto;
 }
 
-h2 {
-  margin: 0 0 20px;
-  font-size: 1.5rem;
-  color: rgba(0, 0, 0, 0.925);
-}
-
 h1 {
   margin: 0;
   font-size: 2.5rem;
-  color: rgba(0, 0, 0, 0.925);
   text-align: center;
+}
+h2 {
+  margin: 0 0 20px;
+  font-size: 1.5rem;
+}
+
+h1,
+h2 {
+  color: #333;
 }
 
 h1 span {
@@ -95,9 +97,11 @@ h1 span {
 form {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 label {
+  display: block;
   margin-bottom: 5px;
 }
 
@@ -129,18 +133,18 @@ input {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 30px;
-  font-weight: 500;
+  margin-bottom: 20px;
 }
 
 th,
 td {
-  padding: 10px;
-  text-align: left;
+  border: 1px solid #333;
   color: #222;
+  padding: 10px 15px;
+  text-align: left;
 }
 
-.actions button {
+button {
   background-color: #951ba5;
   font-weight: 600;
   color: white;
@@ -148,13 +152,13 @@ td {
   padding: 10px 15px;
   border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.4s;
+  transition: background-color 0.4s, opacity 0.3s;
 }
 
-.actions button:hover {
+button:hover {
   opacity: 0.8;
   background-color: #28a745;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, opacity 0.3s;
 }
 
 .footer {
@@ -222,4 +226,65 @@ input[type="radio"]:checked + label span {
   -o-transition: background-color 0.24s linear;
   -moz-transition: background-color 0.24s linear;
   transition: background-color 0.24s linear;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #333;
+}
+
+.mensaje {
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+  font-weight: 600;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  font-weight: 600;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.edit-button {
+  background-image: url("../assets/edit.svg");
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+}
+
+.delete-button {
+  background-image: url("../assets/delete-icon.svg");
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.monto-salida {
+  color: rgba(255, 0, 0, 0.575);
 }

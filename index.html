@@ -11,7 +11,7 @@
     <main>
       
       <nav class="navbar">
-        <h1>EXPEN<span>$</span>ES</h1>
+        <a href="index.html"><h1>EXPEN<span>$</span>ES</h1></a>
         <ul>
           <li><a href="#">Inicio</a></li>
           <li><a href="#">Gastos</a></li>
@@ -47,6 +47,8 @@
     
             <button type="submit" class="add-gasto">Agregar Gasto</button>
         </form>
+
+        <div id="mensaje"></div>
     </section>
     
       <section class="expenses-section">
@@ -60,31 +62,13 @@
                   </tr>
               </thead>
               <tbody id="expenses-list">             
-                  <tr id="table-row">
-                      <td>Comida</td>
-                      <td>$1000.00</td>
-                      <td class="actions">
-                          <button class="edit-button">Editar</button>
-                          <button class="delete-button">Eliminar</button>
-                      </td>
-                  </tr>
-                  <tr id="table-row">
-                      <td>Transporte</td>
-                      <td>$500.00</td>
-                      <td class="actions">
-                          <button class="edit-button">Editar</button>
-                          <button class="delete-button">Eliminar</button>
-                      </td>
-                  </tr>
-                  <tr id="table-row">
-                      <td>Entretenimiento</td>
-                      <td>$200.00</td>
-                      <td class="actions">
-                          <button class="edit-button">Editar</button>
-                          <button class="delete-button">Eliminar</button>
-                      </td>
+                  
               </tbody>
           </table>
+
+          <div id="totales">
+
+          </div>
       </section>
   </main>
   </body>
