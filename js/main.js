@@ -3,20 +3,24 @@ class Transaccion {
     this.tipo = tipo;
     this.monto = monto;
     this.descripcion = descripcion;
+    this.fecha = new Date();
   }
 }
 
 class LibroMayor {
   constructor() {
-    this.transacciones = [];
+    // Cargo transacciones desde LocalStorage si existen
+    this.transacciones = this.cargarTransacciones() || [];
   }
 
   agregarTransaccion(transaccion) {
     this.transacciones.push(transaccion);
+    this.guardarTransacciones();
   }
 
   eliminarTransaccion(index) {
     this.transacciones.splice(index, 1);
+    this.guardarTransacciones();
   }
 
   obtenerTotales() {
@@ -37,6 +41,22 @@ class LibroMayor {
   obtenerSaldo() {
     const { totalEntradas, totalSalidas } = this.obtenerTotales();
     return totalEntradas - totalSalidas;
+  }
+
+  guardarTransacciones() {
+    localStorage.setItem("transacciones", JSON.stringify(this.transacciones));
+  }
+
+  cargarTransacciones() {
+    const transacciones = JSON.parse(localStorage.getItem("transacciones"));
+    if (transacciones) {
+      return transacciones.map((transaccion) => {
+        const obj = Object.assign(new Transaccion(), transaccion);
+        obj.fecha = new Date(transaccion.fecha); // Asegúrate de que fecha sea un objeto Date
+        return obj;
+      });
+    }
+    return [];
   }
 }
 
@@ -102,11 +122,8 @@ function actualizarTabla() {
     celdaCategoria.textContent = transaccion.descripcion;
 
     const celdaMonto = document.createElement("td");
-    celdaMonto.textContent = `$${transaccion.monto.toFixed(2)}`;
-
-    // Aplica la clase CSS dependiendo del tipo de transacción
+    celdaMonto.textContent = `$${transaccion.monto.toLocaleString("de-DE")}`;
     if (transaccion.tipo === 2) {
-      // Tipo 2 es una salida
       celdaMonto.classList.add("monto-salida");
     }
 
@@ -122,10 +139,18 @@ function actualizarTabla() {
     celdaAcciones.appendChild(botonEditar);
     celdaAcciones.appendChild(botonEliminar);
 
+    // Nueva celda para la fecha
+    const celdaFecha = document.createElement("td");
+    celdaFecha.textContent = transaccion.fecha.toLocaleDateString("es-ES", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+
     fila.appendChild(celdaCategoria);
     fila.appendChild(celdaMonto);
     fila.appendChild(celdaAcciones);
-
+    fila.appendChild(celdaFecha);
     listaGastos.appendChild(fila);
   });
 }
@@ -137,11 +162,11 @@ function actualizarTotales() {
   const totalesElement = document.getElementById("totales");
 
   if (totalesElement) {
-    totalesElement.textContent = `Total Entradas: $${totales.totalEntradas.toFixed(
-      2
+    totalesElement.textContent = `Total Entradas: $${totales.totalEntradas.toLocaleString(
+      "de-DE"
     )}, 
-      Total Salidas: $${totales.totalSalidas.toFixed(2)}, 
-      Saldo Actual: $${saldoActual.toFixed(2)}`;
+      Total Salidas: $${totales.totalSalidas.toLocaleString("de-DE")}, 
+      Saldo Actual: $${saldoActual.toLocaleString("de-DE")}`;
   } else {
     console.error('Elemento con ID "totales" no encontrado.');
   }
@@ -166,3 +191,9 @@ function eliminarTransaccion(index) {
   actualizarTotales();
   mostrarMensaje("Transacción eliminada exitosamente", "success");
 }
+
+// Inicializo tabla y totales al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  actualizarTabla();
+  actualizarTotales();
+});

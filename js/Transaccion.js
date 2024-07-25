@@ -8,8 +8,8 @@ export class Transaccion {
 
   detalles() {
     const tipoStr = this.tipo === 1 ? "entrada" : "salida";
-    return `${this.fecha.toLocaleDateString()} - ${tipoStr}: $${this.monto} - ${
-      this.descripcion
-    }`;
+    return `${this.fecha.toLocaleDateString("es-ES")} - ${tipoStr}: $${
+      this.monto
+    } - ${this.descripcion}`;
   }
 }

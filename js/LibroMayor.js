@@ -1,4 +1,4 @@
-import { Transaccion } from "./Transaccion.js";
+import { Transaccion } from ".Transaccion.js";
 
 export class LibroMayor {
   constructor() {

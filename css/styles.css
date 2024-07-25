@@ -145,7 +145,7 @@ td {
 }
 
 button {
-  background-color: #951ba5;
+  background-color: #8400fffa;
   font-weight: 600;
   color: white;
   border: none;
@@ -286,5 +286,5 @@ input[type="number"] {
 }
 
 .monto-salida {
-  color: rgba(255, 0, 0, 0.575);
+  color: rgb(255, 0, 0);
 }
