@@ -142,6 +142,7 @@ td {
   color: #222;
   padding: 10px 15px;
   text-align: left;
+  user-select: none;
 }
 
 button {

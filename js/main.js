@@ -155,6 +155,46 @@ function actualizarTabla() {
   });
 }
 
+// Variables para guardar el estado de orden
+let ordenCategoriaAscendente = true;
+let ordenMontoAscendente = true;
+let ordenFechaAscendente = true;
+
+// Función para ordenar las transacciones por un campo específico
+function ordenarTransacciones(campo, ascendente) {
+  libroMayor.transacciones.sort((a, b) => {
+    if (campo === "categoria") {
+      return ascendente
+        ? a.descripcion.localeCompare(b.descripcion)
+        : b.descripcion.localeCompare(a.descripcion);
+    } else if (campo === "monto") {
+      return ascendente ? a.monto - b.monto : b.monto - a.monto;
+    } else if (campo === "fecha") {
+      return ascendente
+        ? new Date(a.fecha) - new Date(b.fecha)
+        : new Date(b.fecha) - new Date(a.fecha);
+    }
+  });
+
+  actualizarTabla();
+}
+
+// Añadir los eventos a los encabezados de la tabla
+document.getElementById("sort-categoria").addEventListener("click", () => {
+  ordenarTransacciones("categoria", ordenCategoriaAscendente);
+  ordenCategoriaAscendente = !ordenCategoriaAscendente; // Alternar estado
+});
+
+document.getElementById("sort-monto").addEventListener("click", () => {
+  ordenarTransacciones("monto", ordenMontoAscendente);
+  ordenMontoAscendente = !ordenMontoAscendente; // Alternar estado
+});
+
+document.getElementById("sort-fecha").addEventListener("click", () => {
+  ordenarTransacciones("fecha", ordenFechaAscendente);
+  ordenFechaAscendente = !ordenFechaAscendente; // Alternar estado
+});
+
 function actualizarTotales() {
   const totales = libroMayor.obtenerTotales();
   const saldoActual = libroMayor.obtenerSaldo();
