@@ -7,8 +7,13 @@
 }
 
 body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
   background-color: #202123;
   color: #333;
 }
@@ -29,30 +34,6 @@ a {
   margin-bottom: 35px;
 }
 
-.navbar ul {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-}
-
-.navbar ul li {
-  margin-right: 20px;
-  background: #8400fffa;
-  padding: 10px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.navbar ul li:hover {
-  background-color: #28a745;
-  transition: background-color 0.3s;
-}
-
-.navbar ul li a {
-  color: white;
-}
-
 header {
   background-color: #2cf354;
   color: black;
@@ -61,22 +42,17 @@ header {
 }
 
 main {
-  padding: 20px;
+  padding: 40px;
+  width: 100dvw;
   max-width: 800px;
   margin: 0 auto;
 }
 
 h1 {
-  margin: 0;
-  font-size: 2.5rem;
-  text-align: center;
-}
-h2 {
-  margin: 0 0 20px;
-  font-size: 1.5rem;
+  font-size: 40px;
+  transition: font-size 0.3s;
 }
 
-h1,
 h2 {
   color: #333;
 }
@@ -133,21 +109,21 @@ input {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
 }
 
 th,
 td {
   border: 1px solid #333;
   color: #222;
-  padding: 10px 15px;
+  padding: 10px;
   text-align: left;
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
 }
 
 button {
   background-color: #8400fffa;
-  font-weight: 600;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -163,7 +139,7 @@ button:hover {
 }
 
 .footer {
-  background-color: #23cc49;
+  background-color: #2cf354;
   color: black;
   text-align: center;
   font-weight: 500;
@@ -205,7 +181,6 @@ input[type="radio"] + label span {
   margin: -2px 10px 0 0;
   vertical-align: middle;
   cursor: pointer;
-  -moz-border-radius: 50%;
   border-radius: 50%;
   border: 3px solid #ffffff;
 }
@@ -223,9 +198,6 @@ input[type="radio"]:checked + label span {
 }
 input[type="radio"] + label span,
 input[type="radio"]:checked + label span {
-  -webkit-transition: background-color 0.24s linear;
-  -o-transition: background-color 0.24s linear;
-  -moz-transition: background-color 0.24s linear;
   transition: background-color 0.24s linear;
 }
 
@@ -269,23 +241,167 @@ input[type="number"] {
 
 .edit-button {
   background-image: url("../assets/edit.svg");
-  background-size: 30px;
+  background-size: 20px;
   background-repeat: no-repeat;
   background-position: center;
-  width: 40px;
-  height: 40px;
+  width: 3%;
+  height: 30px;
 }
 
 .delete-button {
   background-image: url("../assets/delete-icon.svg");
-  background-size: 30px;
+  background-size: 20px;
   background-repeat: no-repeat;
   background-position: center;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-left: 10px;
 }
 
 .monto-salida {
   color: rgb(255, 0, 0);
+}
+
+.container {
+  cursor: pointer;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 30px;
+  height: 20px;
+}
+
+.bars {
+  width: 30px;
+  height: 4px;
+  background: #2cf354;
+}
+
+.bars::before,
+.bars::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background: #2cf354;
+}
+
+.bars::before {
+  margin-top: 9px;
+}
+
+.bars::after {
+  margin-top: 18px;
+}
+
+nav {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  background: #2cf354;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: -200vw;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  margin: 50px 0;
+}
+
+nav ul li a {
+  color: #000;
+  font-size: 2em;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  opacity: 0;
+  pointer-events: none;
+}
+
+nav ul li a:after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  height: 3px;
+  border-radius: 5px;
+  background: #000;
+  bottom: -10px;
+  left: 0;
+  transform-origin: left;
+  transition: transform 0.5s ease;
+  transform: scaleX(0);
+}
+
+nav ul li a:hover:after {
+  transform: scaleX(1);
+}
+
+nav .close {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 6%;
+  right: 5%;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+}
+
+nav h1 {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  opacity: 1;
+  color: #000;
+  font-size: 2em;
+  cursor: pointer;
+  transition: font-size 0.3s;
+}
+
+nav .close div::before,
+nav .close div::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background: #000;
+  transition: background 0.5s ease;
+}
+nav .close div::before {
+  transform: rotate(-45deg);
+}
+
+nav .close div::after {
+  transform: rotate(45deg);
+}
+
+nav .close:hover div::before,
+nav .close:hover div::after {
+  background: #8400fffa;
+}
+
+@media (max-width: 992px) {
+  h1 {
+    font-size: 25px;
+    transition: font-size 0.3s;
+  }
+  h2 {
+    font-size: 1.2rem;
+    transition: font-size 0.3s;
+  }
+}
+
+@media (max-width: 501px) {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }

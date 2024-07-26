@@ -3,23 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title> EXPEN$ES | Nicolas Dibarboure</title>
-    <link rel="stylesheet" href="css/styles.css" />
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css" /> 
   </head>
   <body>
-    <main>
-      
-      <nav class="navbar">
+    <div class="container">
+      <div class="bars"></div>
+    </div>
+      <nav>
         <a href="index.html"><h1>EXPEN<span>$</span>ES</h1></a>
-        <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Gastos</a></li>
-          <li><a href="#">Ingresos</a></li>
-          <li><a href="#">Graficos</a></li>
-        </ul>
-      </nav>
-      
+      <div class="close">
+        <div></div>
+      </div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Graficos</a></li>
+        <li><a href="#">Analisis de Categorias</a></li>
+        <li><a href="#">Historial de Transacciones</a></li>
+      </ul>
+    </nav>
+    
+    <main>
       <section class="form-section">
         <h2>Añadir un nuevo gasto</h2>
         <form id="formulario-gastos">
@@ -80,5 +87,7 @@
     </footer>
 
     <script type="module" src="./js/main.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+
   </body>
 </html>
