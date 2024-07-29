@@ -7,9 +7,10 @@ export class Transaccion {
   }
 
   detalles() {
-    const tipoStr = this.tipo === 1 ? "entrada" : "salida";
-    return `${this.fecha.toLocaleDateString("es-ES")} - ${tipoStr}: $${
-      this.monto
-    } - ${this.descripcion}`;
+    const { tipo, monto, descripcion, fecha } = this;
+    const tipoStr = tipo === 1 ? "entrada" : "salida";
+    return `${fecha.toLocaleDateString(
+      "es-ES"
+    )} - ${tipoStr}: $${monto} - ${descripcion}`;
   }
 }

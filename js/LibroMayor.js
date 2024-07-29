@@ -1,4 +1,4 @@
-import { Transaccion } from ".Transaccion.js";
+import { Transaccion } from "./Transaccion.js";
 
 export class LibroMayor {
   constructor() {
@@ -17,22 +17,19 @@ export class LibroMayor {
 
   filtrarTransacciones(tipo) {
     return this.transacciones.filter(
-      (transaccion) => transaccion.tipo === tipo
+      ({ tipo: transaccionTipo }) => transaccionTipo === tipo
     );
   }
 
   buscarTransaccion(descripcion) {
-    return this.transacciones.find((transaccion) =>
-      transaccion.descripcion.includes(descripcion)
+    return this.transacciones.find(({ descripcion: transaccionDescripcion }) =>
+      transaccionDescripcion.includes(descripcion)
     );
   }
 
   obtenerSaldo() {
     return this.transacciones.reduce(
-      (saldo, transaccion) =>
-        transaccion.tipo === 1
-          ? saldo + transaccion.monto
-          : saldo - transaccion.monto,
+      (saldo, { tipo, monto }) => (tipo === 1 ? saldo + monto : saldo - monto),
       0
     );
   }
@@ -45,11 +42,11 @@ export class LibroMayor {
 
   obtenerTotales() {
     return this.transacciones.reduce(
-      (totales, transaccion) => {
-        if (transaccion.tipo === 1) {
-          totales.totalEntradas += transaccion.monto;
+      (totales, { tipo, monto }) => {
+        if (tipo === 1) {
+          totales.totalEntradas += monto;
         } else {
-          totales.totalSalidas += transaccion.monto;
+          totales.totalSalidas += monto;
         }
         return totales;
       },
@@ -63,7 +60,7 @@ export class LibroMayor {
 
   buscarPorMonto(monto) {
     return this.transacciones.filter(
-      (transaccion) => transaccion.monto === monto
+      ({ monto: transaccionMonto }) => transaccionMonto === monto
     );
   }
 }

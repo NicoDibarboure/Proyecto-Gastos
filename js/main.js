@@ -27,11 +27,11 @@ class LibroMayor {
     let totalEntradas = 0;
     let totalSalidas = 0;
 
-    this.transacciones.forEach((transaccion) => {
-      if (transaccion.tipo === 1) {
-        totalEntradas += transaccion.monto;
+    this.transacciones.forEach(({ tipo, monto }) => {
+      if (tipo === 1) {
+        totalEntradas += monto;
       } else {
-        totalSalidas += transaccion.monto;
+        totalSalidas += monto;
       }
     });
 
