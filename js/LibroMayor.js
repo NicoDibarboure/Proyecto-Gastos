@@ -2,16 +2,24 @@ import { Transaccion } from "./Transaccion.js";
 
 export class LibroMayor {
   constructor() {
-    this.transacciones = [];
+    this.transacciones = this.cargarTransacciones() || [];
   }
 
   agregarTransaccion(transaccion) {
     this.transacciones.push(transaccion);
+    this.guardarTransacciones();
+    if (typeof window.actualizarGraficoGastos === "function") {
+      window.actualizarGraficoGastos();
+    }
   }
 
   eliminarTransaccion(index) {
     if (index >= 0 && index < this.transacciones.length) {
       this.transacciones.splice(index, 1);
+      this.guardarTransacciones();
+      if (typeof window.actualizarGraficoGastos === "function") {
+        window.actualizarGraficoGastos();
+      }
     }
   }
 
@@ -62,5 +70,13 @@ export class LibroMayor {
     return this.transacciones.filter(
       ({ monto: transaccionMonto }) => transaccionMonto === monto
     );
+  }
+
+  cargarTransacciones() {
+    return JSON.parse(localStorage.getItem("transacciones")) || [];
+  }
+
+  guardarTransacciones() {
+    localStorage.setItem("transacciones", JSON.stringify(this.transacciones));
   }
 }

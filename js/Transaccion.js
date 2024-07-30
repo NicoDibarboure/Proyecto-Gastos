@@ -1,8 +1,9 @@
 export class Transaccion {
-  constructor(tipo, monto, descripcion) {
-    this.tipo = tipo; // 1 para 'entrada', 2 para 'salida'
+  constructor(tipo, monto, descripcion, categoria) {
+    this.tipo = tipo;
     this.monto = monto;
     this.descripcion = descripcion;
+    this.categoria = categoria;
     this.fecha = new Date();
   }
 

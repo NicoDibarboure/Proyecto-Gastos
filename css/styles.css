@@ -12,8 +12,8 @@ body {
   min-height: 100dvh;
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
   align-items: center;
-  overflow: hidden;
   background-color: #202123;
   color: #333;
 }
@@ -66,6 +66,7 @@ h1 span {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
   margin-bottom: 20px;
   font-weight: 500;
 }
@@ -262,13 +263,28 @@ input[type="number"] {
   color: rgb(255, 0, 0);
 }
 
+#totales {
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.grafico-container {
+  width: 100%;
+  height: 400px;
+}
+
+#grafico-gastos {
+  width: 100%;
+  height: 100%;
+}
+
 .container {
   cursor: pointer;
   position: absolute;
   top: 5%;
   right: 5%;
-  width: 30px;
-  height: 20px;
+  width: 45px;
+  height: 100%;
 }
 
 .bars {
@@ -297,16 +313,19 @@ input[type="number"] {
 nav {
   position: absolute;
   width: 100%;
-  height: 30px;
+  height: 40px;
   background: #2cf354;
   display: flex;
   justify-content: center;
   align-items: center;
   right: -200vw;
+  top: 0;
 }
 
 nav ul {
   list-style: none;
+  position: relative;
+  top: -10%;
 }
 
 nav ul li {
@@ -403,5 +422,11 @@ nav .close:hover div::after {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+  }
+}
+
+@media (max-width: 303px) {
+  nav {
+    top: 0;
   }
 }

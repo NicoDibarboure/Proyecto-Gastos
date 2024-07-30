@@ -19,7 +19,7 @@
         <div></div>
       </div>
       <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="./index.html">Home</a></li>
         <li><a href="#">Graficos</a></li>
         <li><a href="#">Analisis de Categorias</a></li>
         <li><a href="#">Historial de Transacciones</a></li>
@@ -78,6 +78,12 @@
 
           </div>
       </section>
+      <section class="form-section">
+        <h2>Gráfico de Gastos</h2>
+        <div class="grafico-container">
+          <canvas id="grafico-gastos"></canvas>
+        </div>
+      </section>
   </main>
   </body>
     
@@ -87,6 +93,8 @@
     </footer>
 
     <script type="module" src="./js/main.js"></script>
+    <script type="module" src="../js/graficos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
 
   </body>

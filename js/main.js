@@ -1,15 +1,15 @@
 class Transaccion {
-  constructor(tipo, monto, descripcion) {
+  constructor(tipo, monto, descripcion, categoria) {
     this.tipo = tipo;
     this.monto = monto;
     this.descripcion = descripcion;
+    this.categoria = categoria;
     this.fecha = new Date();
   }
 }
 
 class LibroMayor {
   constructor() {
-    // Cargo transacciones desde LocalStorage si existen
     this.transacciones = this.cargarTransacciones() || [];
   }
 
@@ -52,7 +52,7 @@ class LibroMayor {
     if (transacciones) {
       return transacciones.map((transaccion) => {
         const obj = Object.assign(new Transaccion(), transaccion);
-        obj.fecha = new Date(transaccion.fecha); // Asegúrate de que fecha sea un objeto Date
+        obj.fecha = new Date(transaccion.fecha);
         return obj;
       });
     }
@@ -60,7 +60,7 @@ class LibroMayor {
   }
 }
 
-const libroMayor = new LibroMayor();
+export const libroMayor = new LibroMayor();
 
 document
   .getElementById("formulario-gastos")
@@ -86,6 +86,10 @@ document
     libroMayor.agregarTransaccion(nuevaTransaccion);
     actualizarTabla();
     actualizarTotales();
+
+    if (typeof window.actualizarGraficoGastos === "function") {
+      window.actualizarGraficoGastos();
+    }
 
     document.getElementById("categoria").value = "";
     document.getElementById("precio").value = "";
@@ -139,7 +143,6 @@ function actualizarTabla() {
     celdaAcciones.appendChild(botonEditar);
     celdaAcciones.appendChild(botonEliminar);
 
-    // Nueva celda para la fecha
     const celdaFecha = document.createElement("td");
     celdaFecha.textContent = transaccion.fecha.toLocaleDateString("es-ES", {
       day: "2-digit",
@@ -155,12 +158,10 @@ function actualizarTabla() {
   });
 }
 
-// Variables para guardar el estado de orden
 let ordenCategoriaAscendente = true;
 let ordenMontoAscendente = true;
 let ordenFechaAscendente = true;
 
-// Función para ordenar las transacciones por un campo específico
 function ordenarTransacciones(campo, ascendente) {
   libroMayor.transacciones.sort((a, b) => {
     if (campo === "categoria") {
@@ -179,20 +180,19 @@ function ordenarTransacciones(campo, ascendente) {
   actualizarTabla();
 }
 
-// Añadir los eventos a los encabezados de la tabla
 document.getElementById("sort-categoria").addEventListener("click", () => {
   ordenarTransacciones("categoria", ordenCategoriaAscendente);
-  ordenCategoriaAscendente = !ordenCategoriaAscendente; // Alternar estado
+  ordenCategoriaAscendente = !ordenCategoriaAscendente;
 });
 
 document.getElementById("sort-monto").addEventListener("click", () => {
   ordenarTransacciones("monto", ordenMontoAscendente);
-  ordenMontoAscendente = !ordenMontoAscendente; // Alternar estado
+  ordenMontoAscendente = !ordenMontoAscendente;
 });
 
 document.getElementById("sort-fecha").addEventListener("click", () => {
   ordenarTransacciones("fecha", ordenFechaAscendente);
-  ordenFechaAscendente = !ordenFechaAscendente; // Alternar estado
+  ordenFechaAscendente = !ordenFechaAscendente;
 });
 
 function actualizarTotales() {
@@ -232,7 +232,6 @@ function eliminarTransaccion(index) {
   mostrarMensaje("Transacción eliminada exitosamente", "success");
 }
 
-// Inicializo tabla y totales al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   actualizarTabla();
   actualizarTotales();
@@ -241,19 +240,20 @@ document.addEventListener("DOMContentLoaded", () => {
 const open = document.querySelector(".container");
 const close = document.querySelector(".close");
 var tl = gsap.timeline({ defaults: { duration: 1, ease: "expo.inOut" } });
+
 open.addEventListener("click", () => {
   if (tl.reversed()) {
     tl.play();
   } else {
-    tl.to("nav", { right: 0 })
-      .to("nav", { height: "100vh" }, "-=.1")
+    tl.to("nav", { right: 0, height: 45 })
+      .to("nav", { height: "145dvh" }, "-=.1")
       .to(
         "nav ul li a",
         { opacity: 1, pointerEvents: "all", stagger: 0.2 },
         "-=.8"
       )
       .to(".close", { opacity: 1, pointerEvents: "all" }, "-=.8")
-      .to("nav h2", { opacity: 1 }, "-=1");
+      .to("nav h1", { opacity: 1 }, "-=1");
   }
 });
 
