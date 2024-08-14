@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>EXPEN$ES | Nicolas Dibarboure</title>
+    <link
+      rel="shortcut icon"
+      href="../assets/favicon.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="bars"></div>
+    </div>
+    <nav>
+      <a href="../index.html"><h1>EXPEN<span>$</span>ES</h1></a>
+      <div class="close">
+        <div></div>
+      </div>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="./about.html">Sobre Mi</a></li>
+        <li><a href="./contactame.html">Contáctame</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="title-container">
+        <a href="../index.html"><h2 class="title">EXPEN<span>$</span>ES</h2></a>
+      </div>
+
+      <form
+        class="formulario"
+        action="https://formsubmit.co/nico.dibarboure@gmail.com"
+        method="POST"
+      >
+        <label class="label" for="Nombre">Nombre</label>
+        <input class="input-text" type="text" name="name" required />
+
+        <label class="label" for="Email">Email</label>
+        <input class="input" type="email" name="email" required />
+
+        <label class="label" for="Asunto">Asunto</label>
+        <input class="input-text" type="text" name="subject" required />
+
+        <label class="label" for="Mensaje">Mensaje</label>
+        <textarea class="textarea" name="comments" cols="15" rows="15">
+        </textarea>
+
+        <button class="boton" type="submit">Enviar</button>
+      </form>
+    </main>
+    <footer class="footer">
+      <p>&copy; 2024 - Nicolas Dibarboure</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="../js/gsap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  </body>
+</html>

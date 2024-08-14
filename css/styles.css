@@ -57,7 +57,7 @@ h1 {
   transition: font-size 0.3s;
 }
 
-title-container {
+.title-container {
   width: 220px;
 }
 
@@ -67,6 +67,9 @@ h2 {
 }
 
 h1 span {
+  color: #8400fffa;
+}
+p span {
   color: #8400fffa;
 }
 h2 span {
@@ -214,8 +217,7 @@ input[type="radio"]:checked + label span {
   transition: background-color 0.24s linear;
 }
 
-input[type="text"],
-input[type="number"] {
+.input-main {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
@@ -420,6 +422,51 @@ nav .close:hover div::before,
 nav .close:hover div::after {
   background: #8400fffa;
 }
+
+/* FORMULARIO CONTACTO */
+
+.label {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #2cf354;
+  color: #ffffff;
+}
+.input-text {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #2cf354;
+  color: #ffffff;
+}
+
+.textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #8400fffa;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background-color 0.3s;
+}
+/* MEDIA QUERIES */
 
 @media (max-width: 992px) {
   h1 {

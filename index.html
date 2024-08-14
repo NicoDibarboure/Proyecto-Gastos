@@ -23,8 +23,8 @@
       </div>
       <ul>
         <li><a href="./index.html">Home</a></li>
-        <li><a href="#">Analisis de Mercado</a></li>
-        <li><a href="#">Nosotros</a></li>
+        <li><a href="./pages/about.html">Sobre Mi</a></li>
+        <li><a href="./pages/contactame.html">Contáctame</a></li>
       </ul>
     </nav>
     <main>
@@ -35,9 +35,21 @@
         <h2>Añadir un nuevo gasto</h2>
         <form id="formulario-gastos">
           <label for="categoria">Categoria:</label>
-          <input type="text" id="categoria" name="categoria" required />
+          <input
+            class="input-main"
+            type="text"
+            id="categoria"
+            name="categoria"
+            required
+          />
           <label for="precio">Monto:</label>
-          <input id="precio" name="precio" required type="number" />
+          <input
+            class="input-main"
+            id="precio"
+            name="precio"
+            required
+            type="number"
+          />
           <label>Tipo:</label>
           <div class="checkbox-group">
             <input
@@ -88,6 +100,8 @@
     </footer>
 
     <!-- Scripts -->
+
+    <script type="module" src="./js/gsap.js"></script>
     <script type="module" src="./js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="./js/graficos.js"></script>
