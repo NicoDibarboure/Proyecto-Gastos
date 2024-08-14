@@ -1,10 +1,9 @@
 export class Transaccion {
-  constructor(tipo, monto, descripcion, categoria) {
+  constructor(tipo, monto, descripcion) {
     this.tipo = tipo;
     this.monto = monto;
     this.descripcion = descripcion;
-    this.categoria = categoria;
-    this.fecha = new Date();
+    this.fecha = new Date().toISOString();
   }
 
   detalles() {
