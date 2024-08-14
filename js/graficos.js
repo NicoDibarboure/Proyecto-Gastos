@@ -1,6 +1,4 @@
-import { LibroMayor } from "./LibroMayor.js";
-
-const libroMayor = new LibroMayor();
+import { libroMayor } from "./LibroMayor.js";
 
 let graficoGastos = null;
 
@@ -48,34 +46,25 @@ export function actualizarGraficoGastos() {
   ];
 
   if (graficoGastos) {
-    graficoGastos.data.labels = categorias;
-    graficoGastos.data.datasets[0].data = montos;
-    graficoGastos.data.datasets[0].backgroundColor = colores.slice(
-      0,
-      categorias.length
-    );
-    graficoGastos.update();
-  } else {
-    graficoGastos = new Chart(ctx, {
-      type: "doughnut",
-      data: {
-        labels: categorias,
-        datasets: [
-          {
-            label: "Gastos por Categoría $",
-            data: montos,
-            backgroundColor: colores.slice(0, categorias.length),
-          },
-        ],
-      },
-      options: {
-        responsive: false,
-        maintainAspectRatio: false,
-      },
-    });
+    graficoGastos.destroy();
   }
+
+  graficoGastos = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: categorias,
+      datasets: [
+        {
+          label: "Gastos por Categoría",
+          data: montos,
+          backgroundColor: colores.slice(0, categorias.length),
+          color: "#000",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+    },
+  });
 }
-
-window.actualizarGraficoGastos = actualizarGraficoGastos;
-
-document.addEventListener("DOMContentLoaded", actualizarGraficoGastos);

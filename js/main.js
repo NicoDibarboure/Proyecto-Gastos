@@ -1,4 +1,4 @@
-import { actualizarGraficoGastos } from "./graficos.js"; // Ajusta la ruta si es necesario
+import { actualizarGraficoGastos } from "./graficos.js";
 
 class Transaccion {
   constructor(tipo, monto, descripcion, categoria) {
@@ -18,13 +18,13 @@ class LibroMayor {
   agregarTransaccion(transaccion) {
     this.transacciones.push(transaccion);
     this.guardarTransacciones();
-    actualizarGraficoGastos(); // Actualizar el gráfico después de agregar una transacción
+    actualizarGraficoGastos();
   }
 
   eliminarTransaccion(index) {
     this.transacciones.splice(index, 1);
     this.guardarTransacciones();
-    actualizarGraficoGastos(); // Actualizar el gráfico después de eliminar una transacción
+    actualizarGraficoGastos();
   }
 
   obtenerTotales() {
@@ -93,6 +93,8 @@ document
     document.getElementById("categoria").value = "";
     document.getElementById("precio").value = "";
     mostrarMensaje("Transacción añadida exitosamente", "success");
+
+    window.location.reload(); // Debido a que no se como solucionar a que el grafico se actualice automaticamente, ejecuto esta funcion para que se actualice el grafico con la actualizacion de la pagina.
   });
 
 function mostrarMensaje(mensaje, tipo) {
@@ -228,6 +230,7 @@ function eliminarTransaccion(index) {
   actualizarTotales();
   actualizarGraficoGastos();
   mostrarMensaje("Transacción eliminada exitosamente", "success");
+  window.location.reload(); // Debido a que no se como solucionar a que el grafico se actualice automaticamente, ejecuto esta funcion para que se actualice el grafico con la actualizacion de la pagina.
 }
 
 document.addEventListener("DOMContentLoaded", () => {

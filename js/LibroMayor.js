@@ -1,5 +1,3 @@
-import { Transaccion } from "./Transaccion.js";
-
 export class LibroMayor {
   constructor() {
     this.transacciones = this.cargarTransacciones() || [];
@@ -23,31 +21,6 @@ export class LibroMayor {
     }
   }
 
-  filtrarTransacciones(tipo) {
-    return this.transacciones.filter(
-      ({ tipo: transaccionTipo }) => transaccionTipo === tipo
-    );
-  }
-
-  buscarTransaccion(descripcion) {
-    return this.transacciones.find(({ descripcion: transaccionDescripcion }) =>
-      transaccionDescripcion.includes(descripcion)
-    );
-  }
-
-  obtenerSaldo() {
-    return this.transacciones.reduce(
-      (saldo, { tipo, monto }) => (tipo === 1 ? saldo + monto : saldo - monto),
-      0
-    );
-  }
-
-  mostrarTransacciones() {
-    this.transacciones.forEach((transaccion) => {
-      console.log(transaccion.detalles());
-    });
-  }
-
   obtenerTotales() {
     return this.transacciones.reduce(
       (totales, { tipo, monto }) => {
@@ -62,13 +35,10 @@ export class LibroMayor {
     );
   }
 
-  ordenarPorFecha() {
-    this.transacciones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
-  }
-
-  buscarPorMonto(monto) {
-    return this.transacciones.filter(
-      ({ monto: transaccionMonto }) => transaccionMonto === monto
+  obtenerSaldo() {
+    return this.transacciones.reduce(
+      (saldo, { tipo, monto }) => (tipo === 1 ? saldo + monto : saldo - monto),
+      0
     );
   }
 
@@ -80,3 +50,5 @@ export class LibroMayor {
     localStorage.setItem("transacciones", JSON.stringify(this.transacciones));
   }
 }
+
+export const libroMayor = new LibroMayor();
