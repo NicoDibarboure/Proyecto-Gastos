@@ -19,7 +19,6 @@ body {
 }
 
 a {
-  color: #007bff;
   text-decoration: none;
 }
 
@@ -52,12 +51,25 @@ h1 {
   font-size: 40px;
   transition: font-size 0.3s;
 }
+.title {
+  color: #2cf354;
+  font-size: 40px;
+  transition: font-size 0.3s;
+}
+
+title-container {
+  width: 220px;
+}
 
 h2 {
   color: #333;
+  margin-bottom: 10px;
 }
 
 h1 span {
+  color: #8400fffa;
+}
+h2 span {
   color: #8400fffa;
 }
 .form-section,
