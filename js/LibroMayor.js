@@ -2,11 +2,25 @@ import { Transaccion } from "./Transaccion.js";
 
 export class LibroMayor {
   constructor() {
-    this.transacciones = this.cargarTransacciones() || [];
+    this.transacciones =
+      this.cargarTransacciones().map((transaccion) => {
+        return new Transaccion(
+          transaccion.tipo,
+          transaccion.monto,
+          transaccion.descripcion,
+          transaccion.categoria
+        );
+      }) || [];
   }
 
-  agregarTransaccion(transaccion) {
-    this.transacciones.push(transaccion);
+  agregarTransaccion(tipo, monto, descripcion, categoria) {
+    const nuevaTransaccion = new Transaccion(
+      tipo,
+      monto,
+      descripcion,
+      categoria
+    );
+    this.transacciones.push(nuevaTransaccion);
     this.guardarTransacciones();
     if (typeof window.actualizarGraficoGastos === "function") {
       window.actualizarGraficoGastos();
@@ -77,6 +91,16 @@ export class LibroMayor {
   }
 
   guardarTransacciones() {
-    localStorage.setItem("transacciones", JSON.stringify(this.transacciones));
+    const transaccionesParaGuardar = this.transacciones.map((transaccion) => ({
+      tipo: transaccion.tipo,
+      monto: transaccion.monto,
+      descripcion: transaccion.descripcion,
+      categoria: transaccion.categoria,
+      fecha: transaccion.fecha.toISOString(),
+    }));
+    localStorage.setItem(
+      "transacciones",
+      JSON.stringify(transaccionesParaGuardar)
+    );
   }
 }

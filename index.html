@@ -4,79 +4,83 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title> EXPEN$ES | Nicolas Dibarboure</title>
+    <title>EXPEN$ES | Nicolas Dibarboure</title>
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css" /> 
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <div class="container">
       <div class="bars"></div>
     </div>
-      <nav>
-        <a href="index.html"><h1>EXPEN<span>$</span>ES</h1></a>
+    <nav>
+      <a href="index.html"><h1>EXPEN<span>$</span>ES</h1></a>
       <div class="close">
         <div></div>
       </div>
       <ul>
         <li><a href="./index.html">Home</a></li>
-        <li><a href="#">Graficos</a></li>
         <li><a href="#">Analisis de Categorias</a></li>
         <li><a href="#">Historial de Transacciones</a></li>
       </ul>
     </nav>
-    
+
     <main>
       <section class="form-section">
         <h2>Añadir un nuevo gasto</h2>
         <form id="formulario-gastos">
-            <label for="categoria">Categoria:</label>
-            <input type="text" id="categoria" name="categoria" required>
-    
-            <label for="precio">Monto:</label>
-            <input id="precio" name="precio" required type="number">
-    
-            <label>Tipo:</label>
-            <div class="checkbox-group">
-              <input id="entrada" name="radio" value="1" checked="checked" type="radio">
-              <label for="entrada">
-                  <span></span>
-                  Entrada
-              </label>
+          <label for="categoria">Categoria:</label>
+          <input type="text" id="categoria" name="categoria" required />
+
+          <label for="precio">Monto:</label>
+          <input id="precio" name="precio" required type="number" />
+
+          <label>Tipo:</label>
+          <div class="checkbox-group">
+            <input
+              id="entrada"
+              name="radio"
+              value="1"
+              checked="checked"
+              type="radio"
+            />
+            <label for="entrada">
+              <span></span>
+              Entrada
+            </label>
           </div>
           <div>
-              <input id="salida" name="radio" value="2" type="radio">
-              <label for="salida">
-                  <span></span>
-                  Salida
-              </label>
-            </div>
-    
-            <button type="submit" class="add-gasto">Agregar Gasto</button>
+            <input id="salida" name="radio" value="2" type="radio" />
+            <label for="salida">
+              <span></span>
+              Salida
+            </label>
+          </div>
+
+          <button type="submit" class="add-gasto">Agregar Gasto</button>
         </form>
 
         <div id="mensaje"></div>
-    </section>
-    
+      </section>
+
       <section class="expenses-section">
-          <h2>Gastos</h2>
-          <table id="table">
-              <thead>
-                  <tr>
-                    <th id="sort-categoria">Categoria</th>
-                    <th id="sort-monto">Monto</th>
-                    <th>Acciones</th>
-                    <th id="sort-fecha">Fecha</th>
-                  </tr>
-              </thead>
-              <tbody id="expenses-list">             
-                  
-              </tbody>
-          </table>
+        <h2>Gastos</h2>
+        <table id="table">
+          <thead>
+            <tr>
+              <th id="sort-categoria">Categoria</th>
+              <th id="sort-monto">Monto</th>
+              <th>Acciones</th>
+              <th id="sort-fecha">Fecha</th>
+            </tr>
+          </thead>
+          <tbody id="expenses-list"></tbody>
+        </table>
 
-          <div id="totales">
-
-          </div>
+        <div id="totales"></div>
       </section>
       <section class="form-section">
         <h2>Gráfico de Gastos</h2>
@@ -84,9 +88,7 @@
           <canvas id="grafico-gastos"></canvas>
         </div>
       </section>
-  </main>
-  </body>
-    
+    </main>
 
     <footer class="footer">
       <p>&copy; 2024 - Nicolas Dibarboure</p>
@@ -96,6 +98,5 @@
     <script type="module" src="../js/graficos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
-
   </body>
 </html>

@@ -279,12 +279,12 @@ input[type="number"] {
 }
 
 .container {
-  cursor: pointer;
   position: absolute;
   top: 5%;
   right: 5%;
-  width: 45px;
-  height: 100%;
+  width: 30px;
+  height: 23px;
+  cursor: pointer;
 }
 
 .bars {
