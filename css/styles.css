@@ -268,14 +268,19 @@ input[type="number"] {
   margin-top: 20px;
 }
 
-.grafico-container {
-  width: 100%;
-  height: 400px;
+#grafico-gastos {
+  width: 100% !important;
+  height: 400px; /* Ajusta según tus necesidades */
 }
 
-#grafico-gastos {
-  width: 100%;
-  height: 100%;
+.grafico-section {
+  background: #2cf354;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 
 .container {

@@ -4,21 +4,35 @@ const libroMayor = new LibroMayor();
 
 let graficoGastos = null;
 
-function actualizarGraficoGastos() {
+export function actualizarGraficoGastos() {
   const ctx = document.getElementById("grafico-gastos").getContext("2d");
   if (!ctx) {
     console.error("El elemento del gráfico no se encuentra en el DOM.");
+    return;
   }
+
   const categorias = [];
   const montos = [];
 
   libroMayor.transacciones.forEach((transaccion) => {
-    const index = categorias.indexOf(transaccion.categoria);
+    const categoria = transaccion.descripcion;
+    const monto = transaccion.monto;
+
+    if (categoria === undefined || categoria === null) {
+      console.error(
+        `Categoría no definida para una transacción: ${JSON.stringify(
+          transaccion
+        )}`
+      );
+      return;
+    }
+
+    const index = categorias.indexOf(categoria);
     if (index >= 0) {
-      montos[index] += transaccion.monto;
+      montos[index] += monto;
     } else {
-      categorias.push(transaccion.categoria);
-      montos.push(transaccion.monto);
+      categorias.push(categoria);
+      montos.push(monto);
     }
   });
 
@@ -48,14 +62,14 @@ function actualizarGraficoGastos() {
         labels: categorias,
         datasets: [
           {
-            label: "Gastos por Categoría",
+            label: "Gastos por Categoría $",
             data: montos,
             backgroundColor: colores.slice(0, categorias.length),
           },
         ],
       },
       options: {
-        responsive: true,
+        responsive: false,
         maintainAspectRatio: false,
       },
     });

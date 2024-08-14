@@ -1,3 +1,5 @@
+import { actualizarGraficoGastos } from "./graficos.js"; // Ajusta la ruta si es necesario
+
 class Transaccion {
   constructor(tipo, monto, descripcion, categoria) {
     this.tipo = tipo;
@@ -16,11 +18,13 @@ class LibroMayor {
   agregarTransaccion(transaccion) {
     this.transacciones.push(transaccion);
     this.guardarTransacciones();
+    actualizarGraficoGastos(); // Actualizar el gráfico después de agregar una transacción
   }
 
   eliminarTransaccion(index) {
     this.transacciones.splice(index, 1);
     this.guardarTransacciones();
+    actualizarGraficoGastos(); // Actualizar el gráfico después de eliminar una transacción
   }
 
   obtenerTotales() {
@@ -60,7 +64,7 @@ class LibroMayor {
   }
 }
 
-export const libroMayor = new LibroMayor();
+const libroMayor = new LibroMayor();
 
 document
   .getElementById("formulario-gastos")
@@ -86,14 +90,8 @@ document
     libroMayor.agregarTransaccion(nuevaTransaccion);
     actualizarTabla();
     actualizarTotales();
-
-    if (typeof window.actualizarGraficoGastos === "function") {
-      window.actualizarGraficoGastos();
-    }
-
     document.getElementById("categoria").value = "";
     document.getElementById("precio").value = "";
-
     mostrarMensaje("Transacción añadida exitosamente", "success");
   });
 
@@ -198,9 +196,7 @@ document.getElementById("sort-fecha").addEventListener("click", () => {
 function actualizarTotales() {
   const totales = libroMayor.obtenerTotales();
   const saldoActual = libroMayor.obtenerSaldo();
-
   const totalesElement = document.getElementById("totales");
-
   if (totalesElement) {
     totalesElement.textContent = `Total Entradas: $${totales.totalEntradas.toLocaleString(
       "de-DE"
@@ -223,18 +219,21 @@ function editarTransaccion(index) {
   libroMayor.eliminarTransaccion(index);
   actualizarTabla();
   actualizarTotales();
+  actualizarGraficoGastos();
 }
 
 function eliminarTransaccion(index) {
   libroMayor.eliminarTransaccion(index);
   actualizarTabla();
   actualizarTotales();
+  actualizarGraficoGastos();
   mostrarMensaje("Transacción eliminada exitosamente", "success");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   actualizarTabla();
   actualizarTotales();
+  actualizarGraficoGastos();
 });
 
 const open = document.querySelector(".container");

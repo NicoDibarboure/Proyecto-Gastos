@@ -75,12 +75,10 @@
         </table>
         <div id="totales"></div>
       </section>
-      <section class="form-section">
+      <div class="grafico-section">
         <h2>Gráfico de Gastos</h2>
-        <div class="grafico-container">
-          <div id="grafico-gastos" style="width: 100%; height: 400px"></div>
-        </div>
-      </section>
+        <canvas id="grafico-gastos" style="width: 100%; height: 400px"></canvas>
+      </div>
     </main>
     <footer class="footer">
       <p>&copy; 2024 - Nicolas Dibarboure</p>
@@ -88,7 +86,8 @@
 
     <!-- Scripts -->
     <script type="module" src="./js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="./js/graficos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   </body>
 </html>
