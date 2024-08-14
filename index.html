@@ -27,17 +27,14 @@
         <li><a href="#">Historial de Transacciones</a></li>
       </ul>
     </nav>
-
     <main>
       <section class="form-section">
         <h2>Añadir un nuevo gasto</h2>
         <form id="formulario-gastos">
           <label for="categoria">Categoria:</label>
           <input type="text" id="categoria" name="categoria" required />
-
           <label for="precio">Monto:</label>
           <input id="precio" name="precio" required type="number" />
-
           <label>Tipo:</label>
           <div class="checkbox-group">
             <input
@@ -59,13 +56,10 @@
               Salida
             </label>
           </div>
-
           <button type="submit" class="add-gasto">Agregar Gasto</button>
         </form>
-
         <div id="mensaje"></div>
       </section>
-
       <section class="expenses-section">
         <h2>Gastos</h2>
         <table id="table">
@@ -79,24 +73,22 @@
           </thead>
           <tbody id="expenses-list"></tbody>
         </table>
-
         <div id="totales"></div>
       </section>
       <section class="form-section">
         <h2>Gráfico de Gastos</h2>
         <div class="grafico-container">
-          <canvas id="grafico-gastos"></canvas>
+          <div id="grafico-gastos" style="width: 100%; height: 400px"></div>
         </div>
       </section>
     </main>
-
     <footer class="footer">
       <p>&copy; 2024 - Nicolas Dibarboure</p>
     </footer>
 
+    <!-- Scripts -->
     <script type="module" src="./js/main.js"></script>
-    <script type="module" src="./js/graficos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   </body>
 </html>

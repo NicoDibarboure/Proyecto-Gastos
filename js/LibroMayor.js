@@ -8,59 +8,75 @@ export class LibroMayor {
   agregarTransaccion(transaccion) {
     this.transacciones.push(transaccion);
     this.guardarTransacciones();
+    if (typeof window.actualizarGraficoGastos === "function") {
+      window.actualizarGraficoGastos();
+    }
   }
 
   eliminarTransaccion(index) {
-    this.transacciones.splice(index, 1);
-    this.guardarTransacciones();
+    if (index >= 0 && index < this.transacciones.length) {
+      this.transacciones.splice(index, 1);
+      this.guardarTransacciones();
+      if (typeof window.actualizarGraficoGastos === "function") {
+        window.actualizarGraficoGastos();
+      }
+    }
   }
 
-  obtenerTotales() {
-    let totalEntradas = 0;
-    let totalSalidas = 0;
+  filtrarTransacciones(tipo) {
+    return this.transacciones.filter(
+      ({ tipo: transaccionTipo }) => transaccionTipo === tipo
+    );
+  }
 
-    this.transacciones.forEach(({ tipo, monto }) => {
-      if (tipo === 1) {
-        totalEntradas += monto;
-      } else {
-        totalSalidas += monto;
-      }
-    });
-
-    return { totalEntradas, totalSalidas };
+  buscarTransaccion(descripcion) {
+    return this.transacciones.find(({ descripcion: transaccionDescripcion }) =>
+      transaccionDescripcion.includes(descripcion)
+    );
   }
 
   obtenerSaldo() {
-    const { totalEntradas, totalSalidas } = this.obtenerTotales();
-    return totalEntradas - totalSalidas;
+    return this.transacciones.reduce(
+      (saldo, { tipo, monto }) => (tipo === 1 ? saldo + monto : saldo - monto),
+      0
+    );
   }
 
-  guardarTransacciones() {
-    localStorage.setItem(
-      "transacciones",
-      JSON.stringify(
-        this.transacciones.map(
-          ({ tipo, monto, descripcion, categoria, fecha }) => ({
-            tipo,
-            monto,
-            descripcion,
-            categoria,
-            fecha: fecha ? fecha.toISOString() : new Date().toISOString(), // Manejo de fecha
-          })
-        )
-      )
+  mostrarTransacciones() {
+    this.transacciones.forEach((transaccion) => {
+      console.log(transaccion.detalles());
+    });
+  }
+
+  obtenerTotales() {
+    return this.transacciones.reduce(
+      (totales, { tipo, monto }) => {
+        if (tipo === 1) {
+          totales.totalEntradas += monto;
+        } else {
+          totales.totalSalidas += monto;
+        }
+        return totales;
+      },
+      { totalEntradas: 0, totalSalidas: 0 }
+    );
+  }
+
+  ordenarPorFecha() {
+    this.transacciones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+  }
+
+  buscarPorMonto(monto) {
+    return this.transacciones.filter(
+      ({ monto: transaccionMonto }) => transaccionMonto === monto
     );
   }
 
   cargarTransacciones() {
-    const transacciones = JSON.parse(localStorage.getItem("transacciones"));
-    if (transacciones) {
-      return transacciones.map((transaccion) => {
-        const obj = Object.assign(new Transaccion(), transaccion);
-        obj.fecha = new Date(transaccion.fecha);
-        return obj;
-      });
-    }
-    return [];
+    return JSON.parse(localStorage.getItem("transacciones")) || [];
+  }
+
+  guardarTransacciones() {
+    localStorage.setItem("transacciones", JSON.stringify(this.transacciones));
   }
 }

@@ -44,20 +44,7 @@ class LibroMayor {
   }
 
   guardarTransacciones() {
-    localStorage.setItem(
-      "transacciones",
-      JSON.stringify(
-        this.transacciones.map(
-          ({ tipo, monto, descripcion, categoria, fecha }) => ({
-            tipo,
-            monto,
-            descripcion,
-            categoria,
-            fecha: fecha.toISOString(), // Convertir la fecha a cadena
-          })
-        )
-      )
-    );
+    localStorage.setItem("transacciones", JSON.stringify(this.transacciones));
   }
 
   cargarTransacciones() {
@@ -139,11 +126,7 @@ function actualizarTabla() {
     celdaCategoria.textContent = transaccion.descripcion;
 
     const celdaMonto = document.createElement("td");
-    celdaMonto.textContent = `$${
-      transaccion.monto
-        ? transaccion.monto.toLocaleString("de-DE")
-        : "Monto Desconocido"
-    }`; // Manejo de monto
+    celdaMonto.textContent = `$${transaccion.monto.toLocaleString("de-DE")}`;
     if (transaccion.tipo === 2) {
       celdaMonto.classList.add("monto-salida");
     }
@@ -161,13 +144,11 @@ function actualizarTabla() {
     celdaAcciones.appendChild(botonEliminar);
 
     const celdaFecha = document.createElement("td");
-    celdaFecha.textContent = transaccion.fecha
-      ? transaccion.fecha.toLocaleDateString("es-ES", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-        })
-      : "Sin Fecha"; // Manejo de fecha
+    celdaFecha.textContent = transaccion.fecha.toLocaleDateString("es-ES", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
 
     fila.appendChild(celdaCategoria);
     fila.appendChild(celdaMonto);
@@ -221,19 +202,11 @@ function actualizarTotales() {
   const totalesElement = document.getElementById("totales");
 
   if (totalesElement) {
-    totalesElement.textContent = `Total Entradas: $${
-      totales.totalEntradas
-        ? totales.totalEntradas.toLocaleString("de-DE")
-        : "0."
-    } 
-      Total Salidas: $${
-        totales.totalSalidas
-          ? totales.totalSalidas.toLocaleString("de-DE")
-          : "0."
-      }
-      Saldo Actual: $${
-        saldoActual ? saldoActual.toLocaleString("de-DE") : "0."
-      }`;
+    totalesElement.textContent = `Total Entradas: $${totales.totalEntradas.toLocaleString(
+      "de-DE"
+    )}, 
+      Total Salidas: $${totales.totalSalidas.toLocaleString("de-DE")}, 
+      Saldo Actual: $${saldoActual.toLocaleString("de-DE")}`;
   } else {
     console.error('Elemento con ID "totales" no encontrado.');
   }
