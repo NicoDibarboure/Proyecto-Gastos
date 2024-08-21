@@ -1,0 +1,105 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  width: 100dvw;
+  min-height: 100dvh;
+  background-color: #202123;
+  color: #333;
+}
+table thead {
+  background: #302b63;
+  color: white;
+}
+
+.footer {
+  background-color: #2cf354;
+  color: black;
+  text-align: center;
+  font-weight: 500;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.footer p {
+  margin-bottom: 0;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+  transition: all 0.4s;
+}
+
+h1:hover {
+  font-size: 45px;
+  color: #8400fffa;
+  transition: all 0.4s;
+}
+
+h1 span {
+  color: #2cf354;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+}
+nav {
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.3em;
+  font-weight: 600;
+  transition: all 0.4s;
+  margin: 0 10px;
+}
+
+nav ul li a:hover {
+  color: #8400fffa;
+  font-size: 1.35em;
+  transition: all 0.4s;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 818px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a {
+    font-size: 1.2em;
+    transition: all 0.3s;
+  }
+  nav ul {
+    margin-top: 20px;
+  }
+
+  nav ul li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
