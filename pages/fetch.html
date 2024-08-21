@@ -53,21 +53,31 @@
     ></script>
 
     <script>
-      let url = "https://jsonplaceholder.typicode.com/users/";
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => mostrarData(data))
-        .catch((error) => console.log(error));
+      const url = "https://jsonplaceholder.typicode.com/users/";
 
-      const mostrarData = (data) => {
-        console.log(data);
-        let body = "";
-        for (var i = 0; i < data.length; i++) {
-          body += `<tr><td>${data[i].id}</td><td>${data[i].name}</td><td>${data[i].email}</td></tr>`;
-        }
-        document.getElementById("data").innerHTML = body;
-        //console.log(body)
-      };
+const fetchData = async () => {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    mostrarData(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const mostrarData = (data) => {
+  let body = "";
+  data.forEach(user => {
+    body += `<tr><td>${user.id}</td><td>${user.name}</td><td>${user.email}</td></tr>`;
+  });
+  document.getElementById("data").innerHTML = body;
+};
+
+fetchData();
+
     </script>
 
     <script
